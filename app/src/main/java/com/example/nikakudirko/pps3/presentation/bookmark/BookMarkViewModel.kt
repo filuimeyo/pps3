@@ -27,6 +27,9 @@ class BookMarkViewModel @Inject constructor(
     private val _state: MutableStateFlow<BookMarkState> = MutableStateFlow(BookMarkState())
     val state: StateFlow<BookMarkState> = _state.asStateFlow()
 
+    init{
+        getBookMarkedArticles()
+    }
 
     private fun getBookMarkedArticles() {
         filteredBookMarkedArticles().onEach {
@@ -42,7 +45,7 @@ class BookMarkViewModel @Inject constructor(
     }
 
 
-    fun onBookMarkedChanged(article: Article) {
+    fun onBookMarkedChange(article: Article) {
         viewModelScope.launch {
             updateArticleUseCase(
                 article.copy(

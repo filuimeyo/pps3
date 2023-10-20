@@ -1,6 +1,5 @@
 package com.example.nikakudirko.pps3.presentation.detail
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -36,12 +35,18 @@ class DetailViewModel @AssistedInject constructor(
     private val article: Article
         get() = state.run {
             Article(
-                id,
-                title,
-                content,
-                createdDate
+                id = id,
+                title =title,
+                content = content,
+                createdDate = createdDate,
+                isBookMarked = isBookmarked
             )
         }
+
+    init{
+        initialize()
+    }
+
 
     private fun initialize() {
         val isUpdatingArticle = articleId != -1L
@@ -64,6 +69,7 @@ class DetailViewModel @AssistedInject constructor(
             )
         }
     }
+
 
 
     fun onTitleChange(title: String) {

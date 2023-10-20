@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.lastOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -48,7 +47,7 @@ class HomeViewModel @Inject constructor(
         deleteArticleUseCase(articleId)
     }
 
-    fun onBookMarked(article: Article) = viewModelScope.launch {
+    fun onBookMarkChange(article: Article) = viewModelScope.launch {
         updateArticleUseCase(article.copy(isBookMarked = !article.isBookMarked))
     }
 

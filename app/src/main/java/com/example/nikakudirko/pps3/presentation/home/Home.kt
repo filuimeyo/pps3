@@ -88,7 +88,6 @@ private fun HomeDetail(
             ArticleCard(
                 index = index,
                 article = article,
-                modifier = modifier,
                 onBookMarkChange = onBookMarkChange,
                 onDeleteArticle = onDeleteArticle,
                 onArticleClicked = onArticleClicked
@@ -103,7 +102,6 @@ private fun HomeDetail(
 fun ArticleCard(
     index: Int,
     article: Article,
-    modifier: Modifier,
     onBookMarkChange: (article: Article) -> Unit,
     onDeleteArticle: (Long) -> Unit,
     onArticleClicked: (Long) -> Unit

@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.example.nikakudirko.pps3.common.ScreenViewState
 import com.example.nikakudirko.pps3.data.local.model.Article
 import com.example.nikakudirko.pps3.presentation.home.ArticleCard
-import com.example.nikakudirko.pps3.presentation.home.HomeState
 import com.example.nikakudirko.pps3.presentation.home.articles
 
 @Composable
@@ -40,7 +39,6 @@ fun BookmarkScreen(
                     ArticleCard(
                         index = index,
                         article = article,
-                        modifier = modifier,
                         onBookMarkChange = onBookmarkChange,
                         onDeleteArticle = onDelete,
                         onArticleClicked = onArticleClicked
