@@ -96,4 +96,13 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.5.1")
     testImplementation ("androidx.room:room-testing:2.5.1")
     androidTestImplementation ("androidx.room:room-testing:2.5.1")
+
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+
+//ktor client, serialization and logging
+    implementation ("io.ktor:ktor-client-android:1.5.0")
+    implementation ("io.ktor:ktor-client-serialization:1.5.0")
+    implementation ("io.ktor:ktor-client-logging-jvm:1.5.0")
+
 }

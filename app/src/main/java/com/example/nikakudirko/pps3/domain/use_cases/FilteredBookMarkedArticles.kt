@@ -10,6 +10,6 @@ class FilteredBookMarkedArticles @Inject constructor(
 ){
 
     operator fun invoke(): Flow<List<Article>> {
-        return repository.getBookMarkedArticles()
+        return repository.getAllArticles()
     }
 }

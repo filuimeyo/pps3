@@ -10,15 +10,19 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.nikakudirko.pps3.presentation.about.AboutScreen
 import com.example.nikakudirko.pps3.presentation.bookmark.BookMarkViewModel
 import com.example.nikakudirko.pps3.presentation.bookmark.BookmarkScreen
 import com.example.nikakudirko.pps3.presentation.detail.DetailAssistedFactory
 import com.example.nikakudirko.pps3.presentation.detail.DetailScreen
 import com.example.nikakudirko.pps3.presentation.home.HomeScreen
 import com.example.nikakudirko.pps3.presentation.home.HomeViewModel
+import com.example.nikakudirko.pps3.presentation.network.NetworkArticlesList
+import com.example.nikakudirko.pps3.presentation.network.NetworkScreen
+import com.example.nikakudirko.pps3.presentation.network.NetworkViewModel
 
 enum class Screens{
-    Home, Detail, Bookmark
+    Home, Detail, Bookmark, About, Network
 }
 
 
@@ -29,6 +33,7 @@ fun ArticleNavigation(
     homeViewModel: HomeViewModel,
     bookmarkViewModel: BookMarkViewModel,
     assistedFactory: DetailAssistedFactory,
+    networkViewModel: NetworkViewModel
 ){
     NavHost(
         navController = navHostController,
@@ -81,6 +86,14 @@ fun ArticleNavigation(
                 }
             )
 
+        }
+
+        composable(route = Screens.About.name){
+            AboutScreen()
+        }
+
+        composable(route = Screens.Network.name){
+            NetworkScreen(networkViewModel)
         }
     }
 
