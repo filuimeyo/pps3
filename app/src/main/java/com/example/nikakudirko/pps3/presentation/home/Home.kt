@@ -143,7 +143,7 @@ fun ArticleCard(
         ) {
 
             Text(
-                text = article.title,
+                text = article.title + " " + article.id,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
                 style = MaterialTheme.typography.titleMedium

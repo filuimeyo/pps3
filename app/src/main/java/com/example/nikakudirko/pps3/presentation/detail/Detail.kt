@@ -20,6 +20,9 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,7 +37,7 @@ fun DetailScreen(
     assistedFactory: DetailAssistedFactory,
     navigateUp: () -> Unit,
 ) {
-
+/*
     val viewModel = viewModel(
         modelClass = DetailViewModel::class.java,
         factory = DetailedViewModelFactory(
@@ -56,6 +59,35 @@ fun DetailScreen(
         onContentChange = viewModel::onContentChange,
         onBtnClick = {
             viewModel.addOrUpdateArticle()
+            navigateUp()
+        },
+        onNavigate = navigateUp
+    )*/
+    val viewModel = viewModel(
+        modelClass = DetailViewModel::class.java,
+        factory = DetailedViewModelFactory(
+            articleId = articleId,
+            assistedFactory = assistedFactory
+        )
+    )
+
+    val state = viewModel.state.value
+
+    DetailScreen(
+        modifier = modifier,
+        isUpdatingArticle = state.isUpdatingArticle,
+        title = state.title,
+        content = state.content,
+        isBookmark = state.isBookmarked,
+        onBookmarkChange ={} ,
+        isFormNotBlank =  viewModel.isFormNotBlank,
+        onTitleChange = { viewModel.processIntent(DetailIntent.ChangeTitle(it))},
+        onContentChange = { viewModel.processIntent(DetailIntent.ChangeContent(it))},
+
+
+        onBtnClick = {
+           // viewModel.addOrUpdateArticle()
+            viewModel.processIntent(DetailIntent.SaveArticle)
             navigateUp()
         },
         onNavigate = navigateUp

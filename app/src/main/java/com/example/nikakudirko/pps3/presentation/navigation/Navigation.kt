@@ -17,6 +17,7 @@ import com.example.nikakudirko.pps3.presentation.detail.DetailAssistedFactory
 import com.example.nikakudirko.pps3.presentation.detail.DetailScreen
 import com.example.nikakudirko.pps3.presentation.home.HomeScreen
 import com.example.nikakudirko.pps3.presentation.home.HomeViewModel
+
 import com.example.nikakudirko.pps3.presentation.network.NetworkArticlesList
 import com.example.nikakudirko.pps3.presentation.network.NetworkScreen
 import com.example.nikakudirko.pps3.presentation.network.NetworkViewModel
@@ -46,6 +47,7 @@ fun ArticleNavigation(
                 onBookMarkChange = homeViewModel::onBookMarkChange,
                 onDeleteArticle = homeViewModel::deleteArticle,
                 onArticleClicked = {
+                    println("idddddddddddddddddddddddddddddddddddddd ${it}")
                     navHostController.navigateToSingleTop(
                         route = "${Screens.Detail.name}?id=$it"
                     )
@@ -61,6 +63,7 @@ fun ArticleNavigation(
                 onBookmarkChange = bookmarkViewModel::onBookMarkedChange,
                 onDelete = bookmarkViewModel::deleteArticle ,
                 onArticleClicked ={
+                    println("idddddddddddddddddddddddddddddddddddddd ${it}")
                     navHostController.navigateToSingleTop(
                         route = "${Screens.Detail.name}?id=$it"
                     )
@@ -94,6 +97,7 @@ fun ArticleNavigation(
 
         composable(route = Screens.Network.name){
             NetworkScreen(networkViewModel)
+           // MVIScreen()
         }
     }
 
